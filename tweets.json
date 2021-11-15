@@ -1,12 +1,12 @@
 {
-    "tweets" :{
+    "tweets" :[          /*this data is gonna be retreieved when request is called*/
         {
             "content":"hello"
         },
         {
             "content":"world!"
         }
-    }
+    
+    ]
 }
 
-//this data is gonna be retreieved when request is called
