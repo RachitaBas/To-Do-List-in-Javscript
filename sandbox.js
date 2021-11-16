@@ -17,9 +17,13 @@ request.open('GET',resource);
 request.send();
 });
 };
-getTodos('todos/rachita.json').then(data => {//if location url of json  is wrong it is rejected 
-    //returning promise with the function that fires with data we get back when there is resolve case
-    console.log('promise resolved:',data);
+getTodos('todos/rachita.json').then(data => {
+    console.log('promise 1 resolved:',data);
+    return getTodos('todos/basnet.json');
+}).then(data => {
+    console.log('promise 2 resolved:',data);
+    
+
 
 }).catch((err) => {
     console.log('promise rejected:',err);
