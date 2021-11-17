@@ -1,22 +1,20 @@
 //async and await
 const getTodos = async() => {//any function with async infront of it returns promise
     const response = await fetch ('todos/basnet.json');//await stops assinging  value to response until promise resolved
-const data = await response.json(); //json is asynchrnous and returns promise so until promise is resolved awaits and assign value to data
+if(response.status !==200){
+    throw new Error('cannot fetch the data');//throwing our own error object inside async function ,the promise returned by this async fn is rejected as if sthg wrong on todos or reource url it resolves in console
+}
+
+    const data = await response.json(); //json is asynchrnous and returns promise so until promise is resolved awaits and assign value to data
 return data;
 };
-console.log(1);
-console.log(2);
+
           getTodos()//call gettodos that returns promise 1 and carries all functions inside it that is 2 and 3 and returns the data 
-          .then(data =>  //when we get promise back it resolbes and we ae logging that to console
-              console.log('resolved:',data));
+          .then(data =>console.log('resolved:',data))  //when we get promise back it resolbes and we ae logging that to console
+           .catch(err=> console.log('rejected:',err.message));//when promise rejected and catch error we have thrown above here
             
-              console.log(3);
-              console.log(4);//async function whole code takes sometime to do so it starts print 1234 first and then start again and finish later 
 
-//async helps to chain promises together
-
-
-
+//if error inside rachita.json then promise is rejected directly but in recource url it can be reolved so we make our own error
 
 
 
